@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Bank {
     private String name;
@@ -55,7 +56,6 @@ class Database{
 }
 class BankView{
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
         Database database = new Database();
         Bank bank = new Bank();
         bank.setName("Bala M");
@@ -63,11 +63,12 @@ class BankView{
         bank.setAtmPin(1234);
         bank.setAmountInSavings(10000);
         database.setCustomerList(bank);
-        starBanking();
+        startBanking(database);
 
     }
-    public static void starBanking(){
-        System.out.println("     -----  Welcome To IOB ATM  ------  \n");
+    public static void startBanking(Database database){
+        Scanner in = new Scanner(System.in);
+        System.out.println("\n     -----  Welcome To IOB ATM  ------  \n");
         System.out.println("Enter ATM Pin Number (1234) : \n");
         try{
             int pinInput = in.nextInt();
@@ -76,25 +77,29 @@ class BankView{
 
                 try{
                     int amount = in.nextInt();
-                    if(amount<=database.getCustomerList().get(0).setAmountInSavings()){
+                    if(amount<=database.getCustomerList().get(0).getAmountInSavings()){
                         database.getCustomerList().get(0).setAmountInSavings(database.getCustomerList().get(0).getAmountInSavings()-amount);
                         System.out.println("\nAmount debited Sucessfully ");
-                        starBanking();
+                        startBanking(database);
                     }else {
-                        throw new Exception("Insufficient Balance");
+                        throw new Exception();
                     }
                 }catch (InputMismatchException e){
                     System.out.println("Amount must be number ");
+                    startBanking(database);
                 }catch (Exception e){
-                    System.out.println(e);
+                    System.out.println("Insufficient Balance");
+                    startBanking(database);
                 }
             }
             else
-                throw new Exception("Incorrect Pin");
+                throw new Exception();
         }catch(InputMismatchException e){
             System.out.println("Pin Number must be Number ");
+            startBanking(database);
         }catch (Exception e){
-            System.out.println(e);
+            System.out.println("Incorrect Pin");
+            startBanking(database);
         }
     }
 
