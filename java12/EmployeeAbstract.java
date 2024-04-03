@@ -1,6 +1,4 @@
-/**
- * EmployeeAbstract
- */
+
 public abstract class EmployeeAbstract {
     String name;
     String email;
