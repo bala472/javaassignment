@@ -42,6 +42,11 @@ public class Bank {
         this.atmPin = atmPin;
     }
 }
+class InsufficientBalance extends Exception{
+    InsufficientBalance(){
+        super("Insufficient Balance");
+    }
+}
 class Database{
     private List<Bank> CustomerList = new ArrayList<>();
 
@@ -82,13 +87,13 @@ class BankView{
                         System.out.println("\nAmount debited Sucessfully ");
                         startBanking(database);
                     }else {
-                        throw new Exception();
+                        throw new InsufficientBalance();
                     }
                 }catch (InputMismatchException e){
                     System.out.println("Amount must be number ");
                     startBanking(database);
-                }catch (Exception e){
-                    System.out.println("Insufficient Balance");
+                }catch (InsufficientBalance e){
+                    System.out.println(e.getMessage());
                     startBanking(database);
                 }
             }
