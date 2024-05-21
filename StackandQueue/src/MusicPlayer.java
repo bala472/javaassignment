@@ -43,17 +43,17 @@ class Playlist {
         }
     }
 
-    public void removeSong(Song song) {
+    public void removeSong(Song songs) {
         if (head == null) {
             return;
         }
-        if (head.song.equals(song)) {
+        if (head.song.getTitle().equals(songs.getTitle())) {
             head = head.next;
             return;
         }
         SongNode current = head;
         while (current.next != null) {
-            if (current.next.song.equals(song)) {
+            if (current.next.song.equals(songs)) {
                 current.next = current.next.next;
                 return;
             }
@@ -80,7 +80,7 @@ public class MusicPlayer {
 
         playlist.displayPlaylist();
 
-        Song songToRemove = new Song("Roja Roja", "AR Rahman");
+        Song songToRemove = new Song("Hukum", "Aniruth");
         playlist.removeSong(songToRemove);
 
         playlist.displayPlaylist();

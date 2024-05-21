@@ -1,7 +1,6 @@
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Random;
-
 class Job {
     private String name;
     private int processingTime;
@@ -43,9 +42,7 @@ class Job {
 public class JobSchedulerSimulation {
 
     public static void main(String[] args) {
-        int numJobs = 5;
-        int maxProcessingTime = 10;
-        simulateJobScheduling(numJobs, maxProcessingTime);
+        simulateJobScheduling(5, 10);
     }
 
     public static void simulateJobScheduling(int numJobs, int maxProcessingTime) {
@@ -60,9 +57,7 @@ public class JobSchedulerSimulation {
             Job job = new Job(jobName, processingTime);
             jobsQueue.add(job);
         }
-
         int currentTime = 0;
-
         while (!jobsQueue.isEmpty()) {
             Job currentJob = jobsQueue.poll();
 
