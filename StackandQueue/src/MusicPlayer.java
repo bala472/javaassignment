@@ -1,12 +1,10 @@
 class Song {
     private String title;
     private String artist;
-
     public Song(String title, String artist) {
         this.title = title;
         this.artist = artist;
     }
-
     public String getTitle() {
         return title;
     }
@@ -14,7 +12,6 @@ class Song {
     public String getArtist() {
         return artist;
     }
-
     @Override
     public String toString() {
         return title + " - " + artist;
@@ -22,21 +19,17 @@ class Song {
 }
 class Playlist {
     private SongNode head;
-
     private static class SongNode {
         private Song song;
         private SongNode next;
-
         public SongNode(Song song) {
-            this.song = song;
-            this.next = null;
-        }
-    }
-
+            this.song= song;
+            this.next= null;
+            }
+     }
     public Playlist() {
         this.head = null;
     }
-
     public void addSong(Song song) {
         SongNode newNode = new SongNode(song);
         if (head == null) {
@@ -45,7 +38,7 @@ class Playlist {
             SongNode current = head;
             while (current.next != null) {
                 current = current.next;
-            }
+                   }
             current.next = newNode;
         }
     }
@@ -54,12 +47,10 @@ class Playlist {
         if (head == null) {
             return;
         }
-
         if (head.song.equals(song)) {
             head = head.next;
             return;
         }
-
         SongNode current = head;
         while (current.next != null) {
             if (current.next.song.equals(song)) {
@@ -69,7 +60,6 @@ class Playlist {
             current = current.next;
         }
     }
-
     public void displayPlaylist() {
         SongNode current = head;
         System.out.println("Playlist:");
@@ -84,13 +74,13 @@ public class MusicPlayer {
     public static void main(String[] args) {
         Playlist playlist = new Playlist();
 
-        playlist.addSong(new Song("Shape of You", "Ed Sheeran"));
-        playlist.addSong(new Song("Someone Like You", "Adele"));
-        playlist.addSong(new Song("Uptown Funk", "Mark Ronson ft. Bruno Mars"));
+        playlist.addSong(new Song("Hukum", "Aniruth"));
+        playlist.addSong(new Song("Roja Roja", "AR Rahman"));
+        playlist.addSong(new Song("Thuli Thuli", "Yuvan"));
 
         playlist.displayPlaylist();
 
-        Song songToRemove = new Song("Someone Like You", "Adele");
+        Song songToRemove = new Song("Roja Roja", "AR Rahman");
         playlist.removeSong(songToRemove);
 
         playlist.displayPlaylist();
