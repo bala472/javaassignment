@@ -53,7 +53,7 @@ class Playlist {
         }
         SongNode current = head;
         while (current.next != null) {
-            if (current.next.song.equals(songs)) {
+            if (current.next.song.getTitle().equals(songs.getTitle())) {
                 current.next = current.next.next;
                 return;
             }
@@ -80,7 +80,7 @@ public class MusicPlayer {
 
         playlist.displayPlaylist();
 
-        Song songToRemove = new Song("Hukum", "Aniruth");
+        Song songToRemove = new Song("Roja Roja", "AR Rahman");
         playlist.removeSong(songToRemove);
 
         playlist.displayPlaylist();
